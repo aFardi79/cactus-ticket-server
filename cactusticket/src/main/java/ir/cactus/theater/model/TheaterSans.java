@@ -2,10 +2,7 @@ package ir.cactus.theater.model;
 
 
 import ir.cactus.commons.base.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -16,7 +13,6 @@ public class TheaterSans extends BaseEntity {
     private String toHour;
     private List<Movie> movies;
     private List<Hall> halls;
-
 
 
     @Column(name = "fromHour")
@@ -40,6 +36,7 @@ public class TheaterSans extends BaseEntity {
 
 
     @OneToMany
+    @JoinColumn(name = "sans")
     public List<Movie> getMovies() {
         return movies;
     }
@@ -48,6 +45,8 @@ public class TheaterSans extends BaseEntity {
         this.movies = movies;
     }
 
+    @OneToMany
+    @JoinColumn(name = "sans")
     public List<Hall> getHalls() {
         return halls;
     }
